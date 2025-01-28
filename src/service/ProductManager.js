@@ -18,8 +18,8 @@ export default class ProductManager {
     }
   }
 
-  async saveToFile() {
-   await fs.writeFile(pathProducts, JSON.stringify(this.products, null, 2));
+  saveToFile() {
+    fs.writeFile(pathProducts, JSON.stringify(this.products, null, 2));
   }
 
   async getAllProducts(limit) {
@@ -28,6 +28,7 @@ export default class ProductManager {
     }
     return this.products;
   }
+
   async getProductById(id) {
     return this.products.find((product) => product.id === id);
   }
@@ -50,8 +51,10 @@ export default class ProductManager {
       (product) => product.id === id
     );
     if (productIndex === -1) return null;
+
     const updateProduct = {
       ...this.products[productIndex],
+      ...updateFields,
       id: this.products[productIndex].id,
     };
     this.products[productIndex] = updateProduct;
@@ -60,10 +63,10 @@ export default class ProductManager {
   }
 
   async deleteProduct(id) {
-    const productIndex = this.products.findIndex((product = product.id === id));
+    const productIndex = this.products.findIndex((product => product.id === id));
     if (productIndex == -1) return null;
     const deletedProduct = this.products.splice(productIndex, 1);
-    await this.saveToFile();
+    this.saveToFile();
     return deletedProduct[0];
   }
 }
