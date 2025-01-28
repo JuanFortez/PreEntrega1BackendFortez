@@ -33,13 +33,12 @@ router.get("/:cid", async (req, res) => {
 router.post("/:cid/product/:pid", async (req, res) => {
   try {
     const { cid, pid } = req.params;
-    const updatedCart = await cartManager.addProductToCart(cid, pid);
-
+    const updatedCart = await cartManager.addProductToCart(parseInt(cid), parseInt(pid));
     if (!updatedCart) {
       return res.status(404).json({ error: "Cart not found" });
     }
 
-    res.json({ message: "Producto agregado al carrito", cart: updatedCart });
+    res.json({ message: "Producto agregado al carrito", updatedCart });
   } catch (error) {
     console.log("Error: ", error);
     res.status(500).json({ error: 'Internal Server Error' });

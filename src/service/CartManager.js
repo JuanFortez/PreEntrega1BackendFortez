@@ -41,16 +41,14 @@ export default class CartManager {
   }
 
   async addProductToCart(cartId, productId) {
-    const cart = await this.getCartById(parseInt(cartId));
+    const cart = await this.getCartById(cartId);
     if (!cart) return null;
 
-    const productInCart = cart.products.find(
-      (p) => p.id === parseInt(productId)
-    );
+    const productInCart = cart.products.find((p) => p.product === productId);
     if (productInCart) {
       productInCart.quantity += 1;
     } else {
-      cart.products.push({ id: parseInt(productId), quantity: 1 });
+      cart.products.push({ product: productId, quantity: 1 });
     }
     await this.saveToFile();
     return cart;
