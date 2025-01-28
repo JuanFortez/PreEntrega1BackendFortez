@@ -18,8 +18,8 @@ export default class ProductManager {
     }
   }
 
-  saveToFile() {
-    fs.writeFile(pathProducts, JSON.stringify(this.products, null, 2));
+  async saveToFile() {
+   await fs.writeFile(pathProducts, JSON.stringify(this.products, null, 2));
   }
 
   async getAllProducts(limit) {
@@ -63,7 +63,7 @@ export default class ProductManager {
     const productIndex = this.products.findIndex((product = product.id === id));
     if (productIndex == -1) return null;
     const deletedProduct = this.products.splice(productIndex, 1);
-    this.saveToFile();
+    await this.saveToFile();
     return deletedProduct[0];
   }
 }

@@ -1,20 +1,6 @@
 [
   {
     "id": 1,
-    "title": "Camiseta Deportiva",
-    "description": "Camiseta de manga corta hecha con material transpirable.",
-    "code": "CAMISO1",
-    "price": 29.99,
-    "stock": 150,
-    "category": "Ropa Deportiva",
-    "thumbnails": [
-      "https://example.com/images/camiseta1.jpg",
-      "https://example.com/images/camiseta2.jpg"
-    ],
-    "status": true
-  },
-  {
-    "id": 2,
     "title": "Pantalon Deportivo",
     "description": "Pantalon hecho con material transpirable.",
     "code": "PANTSO1",
@@ -24,6 +10,20 @@
     "thumbnails": [
       "https://example.com/images/pantalon1.jpg",
       "https://example.com/images/pantalon2.jpg"
+    ],
+    "status": true
+  },
+  {
+    "id": 2,
+    "title": "Camiseta Deportivo",
+    "description": "Camiseta hecho con material transpirable.",
+    "code": "CAMIO1",
+    "price": 49.99,
+    "stock": 50,
+    "category": "Ropa Deportiva",
+    "thumbnails": [
+      "https://example.com/images/camiseta1.jpg",
+      "https://example.com/images/camiseta2.jpg"
     ],
     "status": true
   }
