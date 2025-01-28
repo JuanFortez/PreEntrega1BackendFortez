@@ -20,7 +20,7 @@ router.get("/:cid", async (req, res) => {
     const cart = await cartManager.getCartById(cid);
 
     if (!cart) {
-      return res.status(404).json({ error: "Cart not found" });
+      return res.status(404).json({ error: "Carrito no encontrado" });
     }
 
     res.json(cart.products);
@@ -35,7 +35,7 @@ router.post("/:cid/product/:pid", async (req, res) => {
     const { cid, pid } = req.params;
     const updatedCart = await cartManager.addProductToCart(parseInt(cid), parseInt(pid));
     if (!updatedCart) {
-      return res.status(404).json({ error: "Cart not found" });
+      return res.status(404).json({ error: "Carrito no encontrado" });
     }
 
     res.json({ message: "Producto agregado al carrito", updatedCart });
