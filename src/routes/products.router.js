@@ -4,13 +4,9 @@ import ProductManager from "../service/ProductManager.js";
 const router = Router();
 const productManager = new ProductManager();
 
-//APIS
-//Lista todos los productos
 router.get("/", async (req, res) => {
   try {
-    const limit = req.query.limit
-      ? parseInt(req.query.limit)
-      : undefined;
+    const limit = req.query.limit ? parseInt(req.query.limit) : undefined;
     const products = await productManager.getAllProducts(limit);
     res.status(200).json({ status: "Success", payload: products });
   } catch (error) {
@@ -18,7 +14,6 @@ router.get("/", async (req, res) => {
   }
 });
 
-//Buscar un producto por ID
 router.get("/:pid", async (req, res) => {
   try {
     const productId = parseInt(req.params.pid);
@@ -33,7 +28,6 @@ router.get("/:pid", async (req, res) => {
   }
 });
 
-//Crear un nuevo producto
 router.post("/", async (req, res) => {
   try {
     const { title, description, code, price, stock, category, thumbnails } =
@@ -69,7 +63,6 @@ router.post("/", async (req, res) => {
   }
 });
 
-//Actualizar un producto por ID
 router.put("/:pid", async (req, res) => {
   try {
     const productId = parseInt(req.params.pid);
@@ -87,7 +80,6 @@ router.put("/:pid", async (req, res) => {
   }
 });
 
-//Eliminar un producto por ID
 router.delete("/:pid", async (req, res) => {
   try {
     const productId = parseInt(req.params.pid);

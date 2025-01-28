@@ -4,7 +4,6 @@ import path from "path";
 const pathCart = path.resolve("db", "cart.json");
 
 export default class CartManager {
-  // Constructor
   constructor() {
     this.cart = [];
     this.init();
